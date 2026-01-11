@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" id="mainHtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Al-Hayali | Digital Architect</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Almarai:wght@300;400;700;800&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #000000;
+            --white: #ffffff;
+            --gray: #666;
+            --card-bg: #080808;
+            --primary-blue: #0062ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--white); 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        [lang="ar"] body { direction: rtl; font-family: 'Almarai', sans-serif; }
+
+        /* Navigation / Lang Switcher */
+        .lang-btn {
+            position: fixed; top: 20px; right: 20px; z-index: 9999;
+            background: rgba(0,0,0,0.8); border: 1px solid var(--white); color: #fff;
+            padding: 8px 16px; cursor: pointer; font-size: 0.7rem;
+            letter-spacing: 2px; font-weight: bold; backdrop-filter: blur(5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 40px 20px;
+        }
+
+        .profile-wrap {
+            width: clamp(150px, 30vw, 220px); height: clamp(150px, 30vw, 220px);
+            margin-bottom: 30px; position: relative;
+        }
+
+        .profile-img {
+            width: 100%; height: 100%; border-radius: 50%;
+            filter: grayscale(100%); border: 1px solid #333;
+            padding: 8px; object-fit: cover;
+        }
+
+        .hero h1 { 
+            font-family: 'Syncopate', sans-serif; font-size: clamp(1.5rem, 6vw, 3.5rem); 
+            font-weight: 700; margin-bottom: 10px; letter-spacing: 2px;
+        }
+        [lang="ar"] .hero h1 { font-family: 'Almarai', sans-serif; letter-spacing: 0; }
+
+        .subtitle { font-weight: 300; color: #777; max-width: 600px; font-size: clamp(0.9rem, 2vw, 1.1rem); }
+
+        /* Giant Labels */
+        .section-label { 
+            padding: 100px 5% 40px; 
+            font-size: clamp(2.5rem, 12vw, 7rem); 
+            font-weight: 900; letter-spacing: -2px; 
+            font-family: 'Syncopate', sans-serif;
+            text-transform: uppercase; line-height: 0.9;
+        }
+        [lang="ar"] .section-label { font-family: 'Almarai', sans-serif; letter-spacing: 0; }
+
+        /* Projects Grid */
+        .projects-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 1px; background: #1a1a1a; 
+        }
+        
+        .project-card { 
+            background: var(--bg); padding: clamp(40px, 8vw, 80px) clamp(20px, 5vw, 50px);
+            display: flex; flex-direction: column; justify-content: space-between;
+            min-height: 450px;
+        }
+        .project-card:hover { background: var(--card-bg); }
+        .project-card:hover h2 { color: var(--primary-blue); }
+        
+        .project-card h2 { font-family: 'Syncopate'; font-size: clamp(1.2rem, 3vw, 1.6rem); margin-bottom: 15px; }
+        [lang="ar"] .project-card h2 { font-family: 'Almarai', sans-serif; font-weight: 700; }
+        
+        .project-card p { color: #555; line-height: 1.6; font-size: 0.95rem; margin-bottom: 30px; height: 80px; overflow: hidden; }
+
+        .btn-view {
+            align-self: flex-start; background: none; border: 1px solid #fff;
+            color: #fff; padding: 12px 28px; font-size: 0.75rem; cursor: pointer;
+            letter-spacing: 1px; font-weight: bold;
+        }
+        .btn-view:hover { background: #fff; color: #000; }
+
+        /* Reviews */
+        .reviews { padding: 60px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        .review-box { border-left: 2px solid #222; padding: 20px 25px; }
+        [lang="ar"] .review-box { border-left: none; border-right: 2px solid #222; }
+        .review-box p { font-style: italic; color: #999; margin-bottom: 15px; font-size: clamp(1rem, 2vw, 1.2rem); }
+
+        /* Contact & Footer */
+        .contact { padding: 80px 5%; text-align: center; border-top: 1px solid #111; }
+        .social-links { display: flex; justify-content: center; gap: clamp(20px, 5vw, 50px); margin-top: 30px; }
+        .social-links a { color: #fff; font-size: 1.5rem; }
+
+        /* Viewer Overlay */
+        .viewer { display: none; position: fixed; inset: 0; z-index: 10000; background: #000; }
+        .viewer-header { height: 60px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; border-bottom: 1px solid #222; }
+        iframe { width: 100%; height: calc(100vh - 60px); border: none; background: #fff; }
+
+        @media (max-width: 600px) {
+            .lang-btn { top: 10px; right: 10px; padding: 6px 12px; font-size: 0.6rem; }
+            .section-label { padding-top: 60px; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="lang-btn" onclick="toggleLanguage()" id="lSwitch">ARABIC</button>
+
+    <header class="hero">
+        <div class="profile-wrap" data-aos="zoom-in">
+            <img src="3ي.JPG" alt="Omar Al-Hayali" class="profile-img">
+        </div>
+        <h1 id="hName">OMAR AL-HAYALI</h1>
+        <p class="subtitle" id="hTitle">Full-Stack Developer | Visual Designer | Digital Architect</p>
+    </header>
+
+    <div class="section-label" id="lblWorks" data-aos="fade-up">PROJECTS</div>
+
+    <section class="projects-grid">
+        <div class="project-card" data-aos="fade-up">
+            <div>
+                <h2 id="p1Title">ANCHAROGE LOUNGE</h2>
+                <p id="p1Desc">Interactive digital menu and luxury branding for premium hospitality venues.</p>
+            </div>
+            <button class="btn-view" onclick="openViewer('https://wwwgate1com.github.io/Ancharoge/')" id="p1Btn">EXPLORE SITE</button>
+        </div>
+        
+        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+            <div>
+                <h2 id="p2Title">DENTAL CARE</h2>
+                <p id="p2Desc">Modern medical platform for dental clinics with appointment booking features.</p>
+            </div>
+            <button class="btn-view" onclick="openViewer('https://wwwgate1com.github.io/drsar/')" id="p2Btn">EXPLORE SITE</button>
+        </div>
+
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+            <div>
+                <h2 id="p3Title">DIJLA ACADEMY</h2>
+                <p id="p3Desc">Comprehensive e-learning platform with course management and interactive student portal.</p>
+            </div>
+            <button class="btn-view" onclick="openViewer('https://wwwgate1com.github.io/acdemdjla/')" id="p3Btn">EXPLORE SITE</button>
+        </div>
+
+        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+            <div>
+                <h2 id="p4Title">TIGRIS TECH HUB</h2>
+                <p id="p4Desc">Advanced e-commerce ecosystem for high-end PC hardware and gaming components.</p>
+            </div>
+            <button class="btn-view" onclick="openViewer('https://wwwgate1com.github.io/djla/')" id="p4Btn">EXPLORE SITE</button>
+        </div>
+    </section>
+
+    <div class="section-label" id="lblReviews" data-aos="fade-up">CLIENTS</div>
+
+    <section class="reviews">
+        <div class="review-box" data-aos="fade-up">
+            <p id="r1Text">"Exceptional eye for detail. Omar transformed our vision into a stunning digital reality."</p>
+            <small id="c1Name">— Anchorage Management</small>
+        </div>
+        <div class="review-box" data-aos="fade-up" data-aos-delay="100">
+            <p id="r2Text">"The best combination of technical skill and artistic design. Highly recommended."</p>
+            <small id="c2Name">— Dr. Sarah, Medical Center</small>
+        </div>
+        <div class="review-box" data-aos="fade-up" data-aos-delay="200">
+            <p id="r3Text">"A robust platform that handled our students' needs perfectly. True engineering."</p>
+            <small id="c3Name">— Dijla Academy Team</small>
+        </div>
+    </section>
+
+    <footer class="contact">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="far fa-envelope"></i></a>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.7rem; color: #444;">© 2026 OMAR AL-HAYALI. ENGINEERED IN IRAQ.</p>
+    </footer>
+
+    <div id="viewer" class="viewer">
+        <div class="viewer-header">
+            <span id="vStatus" style="font-size: 0.65rem; letter-spacing: 2px; font-weight: bold;">LIVE PREVIEW</span>
+            <button onclick="closeViewer()" style="background:none; border:none; color:#fff; font-size:1.8rem; cursor:pointer;">&times;</button>
+        </div>
+        <iframe id="vFrame"></iframe>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        let lang = 'en';
+        const data = {
+            en: {
+                lBtn: "ARABIC",
+                name: "OMAR AL-HAYALI",
+                title: "Full-Stack Developer | Visual Designer | Digital Architect",
+                lblWorks: "PROJECTS",
+                lblReviews: "CLIENTS",
+                p1Title: "ANCHAROGE LOUNGE",
+                p1Desc: "Interactive digital menu and luxury branding for premium hospitality venues.",
+                p1Btn: "EXPLORE SITE",
+                p2Title: "DENTAL CARE",
+                p2Desc: "Modern medical platform for dental clinics with appointment booking features.",
+                p2Btn: "EXPLORE SITE",
+                p3Title: "DIJLA ACADEMY",
+                p3Desc: "Comprehensive e-learning platform with course management and interactive student portal.",
+                p3Btn: "EXPLORE SITE",
+                p4Title: "TIGRIS TECH HUB",
+                p4Desc: "Advanced e-commerce ecosystem for high-end PC hardware and gaming components.",
+                p4Btn: "EXPLORE SITE",
+                r1: '"Exceptional eye for detail. Omar transformed our vision into a stunning digital reality."',
+                r2: '"The best combination of technical skill and artistic design. Highly recommended."',
+                r3: '"A robust platform that handled our students\' needs perfectly. True engineering."',
+                vStatus: "LIVE PREVIEW MODE"
+            },
+            ar: {
+                lBtn: "ENGLISH",
+                name: "عمر عماد الحيالي",
+                title: "مطور ويب متكامل | مصمم بصري | مهندس رقمي",
+                lblWorks: "المشاريع",
+                lblReviews: "العملاء",
+                p1Title: "أنكوراج لاونج",
+                p1Desc: "نظام منيو رقمي تفاعلي وهوية بصرية فاخرة مخصصة للفنادق والمطاعم.",
+                p1Btn: "عرض الموقع",
+                p2Title: "عيادة الأسنان",
+                p2Desc: "منصة طبية حديثة لعيادات الأسنان مع ميزات حجز المواعيد واستعراض الخدمات.",
+                p2Btn: "عرض الموقع",
+                p3Title: "أكاديمية دجلة",
+                p3Desc: "منصة تعليمية متكاملة تتيح إدارة الكورسات والتواصل التفاعلي مع الطلاب العراقيين.",
+                p3Btn: "عرض الموقع",
+                p4Title: "مركز دجلة للتقنية",
+                p4Desc: "متجر إلكتروني متطور لبيع قطع الحواسب الاحترافية ومعدات الألعاب في السوق العراقي.",
+                p4Btn: "عرض الموقع",
+                r1: '"دقة استثنائية في التفاصيل. استطاع عمر تحويل رؤيتنا إلى واقع رقمي مبهر."',
+                r2: '"أفضل مزيج بين المهارة التقنية والتصميم الفني. ننصح به بشدة."',
+                r3: '"منصة قوية لبت احتياجات طلابنا بشكل مثالي. عمل هندسي حقيقي."',
+                vStatus: "وضع المعاينة المباشرة"
+            }
+        };
+
+        function toggleLanguage() {
+            lang = lang === 'en' ? 'ar' : 'en';
+            document.getElementById('mainHtml').setAttribute('lang', lang);
+            document.getElementById('lSwitch').innerText = data[lang].lBtn;
+            document.getElementById('hName').innerText = data[lang].name;
+            document.getElementById('hTitle').innerText = data[lang].title;
+            document.getElementById('lblWorks').innerText = data[lang].lblWorks;
+            document.getElementById('lblReviews').innerText = data[lang].lblReviews;
+            
+            // Projects titles & descriptions
+            for(let i=1; i<=4; i++) {
+                document.getElementById(`p${i}Title`).innerText = data[lang][`p${i}Title`];
+                document.getElementById(`p${i}Desc`).innerText = data[lang][`p${i}Desc`];
+                document.getElementById(`p${i}Btn`).innerText = data[lang][`p${i}Btn`];
+            }
+
+            document.getElementById('r1Text').innerText = data[lang].r1;
+            document.getElementById('r2Text').innerText = data[lang].r2;
+            document.getElementById('r3Text').innerText = data[lang].r3;
+            document.getElementById('vStatus').innerText = data[lang].vStatus;
+        }
+
+        function openViewer(url) {
+            document.getElementById('vFrame').src = url;
+            document.getElementById('viewer').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeViewer() {
+            document.getElementById('viewer').style.display = 'none';
+            document.getElementById('vFrame').src = '';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
