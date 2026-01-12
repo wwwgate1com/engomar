@@ -16,6 +16,7 @@
             --gray: #666;
             --card-bg: #080808;
             --primary-blue: #0062ff;
+            --gold: #b2967d;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
@@ -76,20 +77,7 @@
 
         .subtitle { font-weight: 300; color: #777; max-width: 600px; font-size: clamp(0.9rem, 2vw, 1.1rem); }
 
-        /* About Section */
-        .about-section {
-            padding: 100px 10%; background: var(--card-bg);
-            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
-        }
-
-        .about-content h3 { font-family: 'Syncopate'; font-size: 2rem; margin-bottom: 20px; color: var(--primary-blue); }
-        .about-content p { line-height: 1.8; color: #aaa; font-size: 1.1rem; margin-bottom: 15px; }
-
-        .edu-badge {
-            color: var(--primary-blue); font-weight: bold; margin-bottom: 20px; display: block; letter-spacing: 1px;
-        }
-
-        /* Giant Labels */
+        /* Section Labels */
         .section-label { 
             padding: 100px 5% 40px; 
             font-size: clamp(2.5rem, 12vw, 7rem); 
@@ -112,7 +100,7 @@
         }
         .project-card:hover { background: var(--card-bg); }
         .project-card:hover h2 { color: var(--primary-blue); }
-        
+
         .project-card h2 { font-family: 'Syncopate'; font-size: clamp(1.2rem, 3vw, 1.6rem); margin-bottom: 15px; }
         .project-card p { color: #555; line-height: 1.6; font-size: 0.95rem; margin-bottom: 30px; height: 80px; overflow: hidden; }
 
@@ -128,7 +116,7 @@
         .review-box { border-left: 2px solid #222; padding: 20px 25px; }
         [lang="ar"] .review-box { border-left: none; border-right: 2px solid #222; }
 
-        /* Contact & Footer */
+        /* Footer */
         .contact { padding: 80px 5%; text-align: center; border-top: 1px solid #111; }
         .social-links { display: flex; justify-content: center; gap: 40px; margin-top: 30px; }
         .social-links a { color: #fff; font-size: 1.8rem; transition: 0.3s; }
@@ -140,7 +128,6 @@
         iframe { width: 100%; height: calc(100vh - 60px); border: none; background: #fff; }
 
         @media (max-width: 768px) {
-            .about-section { grid-template-columns: 1fr; text-align: center; }
             .nav-links { display: none; }
         }
     </style>
@@ -164,21 +151,6 @@
         <p class="subtitle" id="hTitle">Front-End Developer | UI/UX Designer | M.Sc. Electronic Engineer</p>
     </header>
 
-    <section id="about" class="about-section" data-aos="fade-up">
-        <div class="about-content">
-            <h3 id="abTitle">MY STORY</h3>
-            <span class="edu-badge" id="abEdu">M.Sc. in Electronic Engineering</span>
-            <p id="abText1">My journey began in electronic engineering, where precision and complex systems are everything. During my Master's studies, I realized that coding and design are a form of 'Visual Engineering'.</p>
-            <p id="abText2">Today, I merge my academic expertise with my passion as a Front-End Developer to build digital platforms characterized by engineering precision and artistic beauty.</p>
-        </div>
-        <div style="border: 1px solid #222; padding: 40px; border-radius: 20px; background: rgba(255,255,255,0.02);">
-            <h4 style="margin-bottom: 20px; letter-spacing: 2px; color: var(--primary-blue);" id="abExpertise">EXPERTISE</h4>
-            <div style="display: flex; flex-wrap: wrap; gap: 15px; color: #555; font-size: 0.8rem; font-weight: bold;">
-                <span>HTML5</span> / <span>CSS3</span> / <span>JAVASCRIPT</span> / <span>UI/UX</span> / <span>SYSTEM ARCHITECT</span>
-            </div>
-        </div>
-    </section>
-
     <div id="projects" class="section-label" id="lblWorks" data-aos="fade-up">PROJECTS</div>
 
     <section class="projects-grid">
@@ -186,26 +158,31 @@
             <div><h2 id="p1Title">ANCHAROGE LOUNGE</h2><p id="p1Desc">Interactive digital menu and luxury branding.</p></div>
             <button class="btn-view" onclick="openViewer('https://wwwgate1com.github.io/Ancharoge/')" id="p1Btn">EXPLORE SITE</button>
         </div>
-        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card" data-aos="fade-up">
             <div><h2 id="p2Title">DENTAL CARE</h2><p id="p2Desc">Modern medical platform with appointment booking.</p></div>
             <button class="btn-view" onclick="openViewer('https://wwwgate1com.github.io/drsar/')" id="p2Btn">EXPLORE SITE</button>
         </div>
-        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="project-card" data-aos="fade-up">
             <div><h2 id="p3Title">DIJLA ACADEMY</h2><p id="p3Desc">Comprehensive e-learning platform.</p></div>
             <button class="btn-view" onclick="openViewer('https://wwwgate1com.github.io/acdemdjla/')" id="p3Btn">EXPLORE SITE</button>
         </div>
-        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-            <div><h2 id="p4Title">TIGRIS TECH HUB</h2><p id="p4Desc">Advanced e-commerce for high-end hardware.</p></div>
+        <div class="project-card" data-aos="fade-up">
+            <div><h2 id="p4Title">TIGRIS TECH HUB</h2><p id="p4Desc">Advanced e-commerce ecosystem.</p></div>
             <button class="btn-view" onclick="openViewer('https://wwwgate1com.github.io/djla/')" id="p4Btn">EXPLORE SITE</button>
+        </div>
+        <div class="project-card" data-aos="fade-up" style="border: 1px solid var(--gold);">
+            <div><h2 id="p5Title" style="color: var(--gold);">ROYAL E-INVITE</h2><p id="p5Desc">Luxurious digital wedding invitation with RSVP system.</p></div>
+            <button class="btn-view" style="border-color: var(--gold); color: var(--gold);" onclick="openViewer('https://wwwgate1com.github.io/WID/')" id="p5Btn">EXPLORE SITE</button>
         </div>
     </section>
 
     <div class="section-label" id="lblReviews" data-aos="fade-up">CLIENTS</div>
 
     <section class="reviews">
-        <div class="review-box" data-aos="fade-up"><p id="r1Text">"Exceptional eye for detail."</p><small>— Anchorage Management</small></div>
-        <div class="review-box" data-aos="fade-up" data-aos-delay="100"><p id="r2Text">"Technical skill and artistic design."</p><small>— Dr. Sarah</small></div>
-        <div class="review-box" data-aos="fade-up" data-aos-delay="200"><p id="r3Text">"True engineering."</p><small>— Dijla Academy Team</small></div>
+        <div class="review-box" data-aos="fade-up"><p id="r1Text">"Exceptional eye for detail."</p><small id="r1Name">— Anchorage Management</small></div>
+        <div class="review-box" data-aos="fade-up"><p id="r2Text">"Technical skill and artistic design."</p><small id="r2Name">— Dr. Sarah</small></div>
+        <div class="review-box" data-aos="fade-up"><p id="r3Text">"True engineering."</p><small id="r3Name">— Dijla Academy Team</small></div>
+        <div class="review-box" data-aos="fade-up"><p id="r4Text">"The digital invitation was the talk of the wedding."</p><small id="r4Name">— Hussein & Mariam</small></div>
     </section>
 
     <footer id="contact" class="contact">
@@ -213,7 +190,6 @@
         <div class="social-links">
             <a href="https://wa.me/9647736583592" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="mailto:omaremadadeb5gmil.com"><i class="far fa-envelope"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
         <p style="margin-top: 40px; font-size: 0.7rem; color: #444;">© 2026 OMAR EMAD AL-HAYALI. ENGINEERED IN IRAQ.</p>
     </footer>
@@ -237,16 +213,16 @@
                 lnkAbout: "About", lnkProjects: "Projects", lnkContact: "Contact",
                 name: "OMAR EMAD AL-HAYALI",
                 title: "Front-End Developer | UI/UX Designer | M.Sc. Electronic Engineer",
-                abTitle: "MY STORY",
-                abEdu: "M.Sc. in Electronic Engineering",
-                abText1: "My journey began in electronic engineering, where precision and complex systems are everything. During my Master's studies, I realized that coding and design are a form of 'Visual Engineering'.",
-                abText2: "Today, I merge my academic expertise with my passion as a Front-End Developer to build digital platforms characterized by engineering precision and artistic beauty.",
-                abExpertise: "EXPERTISE",
                 lblWorks: "PROJECTS", lblReviews: "CLIENTS", lblConnect: "LET'S CONNECT",
                 p1Title: "ANCHAROGE LOUNGE", p1Desc: "Interactive digital menu and luxury branding.", p1Btn: "EXPLORE SITE",
                 p2Title: "DENTAL CARE", p2Desc: "Modern medical platform with appointment booking.", p2Btn: "EXPLORE SITE",
                 p3Title: "DIJLA ACADEMY", p3Desc: "Comprehensive e-learning platform.", p3Btn: "EXPLORE SITE",
                 p4Title: "TIGRIS TECH HUB", p4Desc: "Advanced e-commerce ecosystem.", p4Btn: "EXPLORE SITE",
+                p5Title: "ROYAL E-INVITE", p5Desc: "Luxurious digital wedding invitation with RSVP system.", p5Btn: "EXPLORE SITE",
+                r1Text: "Exceptional eye for detail.", r1Name: "— Anchorage Management",
+                r2Text: "Technical skill and artistic design.", r2Name: "— Dr. Sarah",
+                r3Text: "True engineering.", r3Name: "— Dijla Academy Team",
+                r4Text: "The digital invitation was the talk of the wedding.", r4Name: "— Hussein & Mariam",
                 vStatus: "LIVE PREVIEW MODE"
             },
             ar: {
@@ -254,16 +230,16 @@
                 lnkAbout: "عني", lnkProjects: "أعمالي", lnkContact: "تواصل معي",
                 name: "عمر عماد الحيالي",
                 title: "مطور واجهات | مصمم UI/UX | ماجستير هندسة إلكترونيات",
-                abTitle: "قصتي",
-                abEdu: "ماجستير هندسة إلكترونيات",
-                abText1: "بدأت رحلتي من هندسة الإلكترونيات، حيث الدقة والأنظمة المعقدة هي الأساس. وخلال دراستي للماجستير، أدركت أن البرمجة والتصميم هما في الحقيقة 'هندسة بصرية' متكاملة.",
-                abText2: "اليوم، أدمج خبرتي الأكاديمية كمهندس ماجستير مع شغفي كمطور واجهات ومصمم لبناء منصات رقمية تتسم بالدقة الهندسية والجمال الفني في آن واحد.",
-                abExpertise: "الخبرات",
                 lblWorks: "المشاريع", lblReviews: "العملاء", lblConnect: "لنكن على اتصال",
                 p1Title: "أنكوراج لاونج", p1Desc: "منيو رقمي تفاعلي وهوية بصرية فاخرة.", p1Btn: "عرض الموقع",
                 p2Title: "عيادة الأسنان", p2Desc: "منصة طبية حديثة مع نظام حجز مواعيد.", p2Btn: "عرض الموقع",
                 p3Title: "أكاديمية دجلة", p3Desc: "منصة تعليمية متكاملة لإدارة الكورسات.", p3Btn: "عرض الموقع",
                 p4Title: "مركز دجلة للتقنية", p4Desc: "متجر إلكتروني متطور لبيع قطع الحاسوب.", p4Btn: "عرض الموقع",
+                p5Title: "دعوة الزفاف الملكية", p5Desc: "دعوة زفاف رقمية فاخرة مع نظام تأكيد حضور ذكي.", p5Btn: "عرض الموقع",
+                r1Text: "عين استثنائية للتفاصيل.", r1Name: "— إدارة أنكوراج",
+                r2Text: "مهارة تقنية وتصميم فني.", r2Name: "— د. سارة",
+                r3Text: "هندسة حقيقية.", r3Name: "— فريق أكاديمية دجلة",
+                r4Text: "كانت الدعوة الرقمية حديث الزفاف.", r4Name: "— حسين ومريم",
                 vStatus: "وضع المعاينة المباشرة"
             }
         };
@@ -277,20 +253,22 @@
             document.getElementById('lnkContact').innerText = data[lang].lnkContact;
             document.getElementById('hName').innerText = data[lang].name;
             document.getElementById('hTitle').innerText = data[lang].title;
-            document.getElementById('abTitle').innerText = data[lang].abTitle;
-            document.getElementById('abEdu').innerText = data[lang].abEdu;
-            document.getElementById('abText1').innerText = data[lang].abText1;
-            document.getElementById('abText2').innerText = data[lang].abText2;
-            document.getElementById('abExpertise').innerText = data[lang].abExpertise;
             document.getElementById('lblWorks').innerText = data[lang].lblWorks;
             document.getElementById('lblReviews').innerText = data[lang].lblReviews;
             document.getElementById('lblConnect').innerText = data[lang].lblConnect;
-            for(let i=1; i<=4; i++) {
+            document.getElementById('vStatus').innerText = data[lang].vStatus;
+
+            // تحديث المشاريع الخمسة
+            for(let i=1; i<=5; i++) {
                 document.getElementById(`p${i}Title`).innerText = data[lang][`p${i}Title`];
                 document.getElementById(`p${i}Desc`).innerText = data[lang][`p${i}Desc`];
                 document.getElementById(`p${i}Btn`).innerText = data[lang][`p${i}Btn`];
             }
-            document.getElementById('vStatus').innerText = data[lang].vStatus;
+            // تحديث الآراء الأربعة
+            for(let i=1; i<=4; i++) {
+                document.getElementById(`r${i}Text`).innerText = data[lang][`r${i}Text`];
+                document.getElementById(`r${i}Name`).innerText = data[lang][`r${i}Name`];
+            }
         }
 
         function openViewer(url) {
